@@ -1,0 +1,12 @@
+..
+youtube ref: https://youtu.be/Fmmzy5Jg-Mw
+
+class Solution:
+    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
+        sett=dict()
+        for i in range(len(nums)):
+            if nums[i] in sett and i-sett[nums[i]]:
+                return True
+            sett[nums[i]]=i
+        return False
+        //driver code
