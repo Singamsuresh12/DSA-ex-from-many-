@@ -1,0 +1,18 @@
+leetcode:
+youtubelink:https://youtu.be/4i6-9IzQHwo
+
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        i=0
+        j=0
+        maxi=0
+        sett=set()
+        while j<len(s):
+            while s[j] in sett:
+                sett.discard(s[i])
+                i=i+1
+            sett.add(s[j])
+            maxi=max(maxi,j-i+1)
+            j=j+1
+        return maxi
+        //driver code left
