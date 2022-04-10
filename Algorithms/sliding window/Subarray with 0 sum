@@ -1,0 +1,23 @@
+Platform: GeeksfroGeeks
+
+reference:  https://www.geeksforgeeks.org/find-if-there-is-a-subarray-with-0-sum/
+
+code:
+
+
+class Solution:
+    
+    #Function to check whether there is a subarray present with 0-sum or not.
+    def subArrayExists(self,arr,n):
+        ##Your code here
+        #Return true or false
+        summ=0
+        sums=set()
+        for i in range(n):
+            summ=summ+arr[i]
+            if summ in sums or summ==0:
+                return True
+            sums.add(summ)
+        return False
+        
+        #driver code exists here
