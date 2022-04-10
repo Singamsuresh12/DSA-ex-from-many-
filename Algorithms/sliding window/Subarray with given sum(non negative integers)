@@ -1,0 +1,27 @@
+platform: GeeksforGeeks
+
+youtube references: 1) https://youtu.be/I5FTXOFZa0E  (see code)
+                    2) https://youtu.be/GY-KULykGaw
+                    3) https://youtu.be/Ofl4KgFhLsM  (see logic here)
+                   
+code:
+
+class Solution:
+    def subArraySum(self,arr, n, s): 
+       #Write your code here
+        summ=0
+        i=0
+        li=[]
+        #i menas left pointer, j means right pointer
+        for j in range(0,n):
+            summ=summ+arr[j]
+            while summ>s:#if sum is greater than s,then subract starting element from sum and also incriment the left pointer(i.e:i)
+                summ=summ-arr[i]
+                i=i+1
+            if summ==s:#if summ==s then append the indexes left and rigght pointers i.ei and j
+                li.append(i+1)# do i+1 and j+1 as we want positions not indexes(index start from zero so add 1 to index to make those as postions)
+                li.append(j+1)
+                return li
+        return[-1]
+        
+        #driver code exists here plss do write while refering this code
