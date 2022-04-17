@@ -1,0 +1,35 @@
+class Solution:
+    def numberOfSubstrings(self, s: str) -> int:
+        n=len(s)
+        res=0
+        count={}#dictionary to maintan count of each word
+        
+        for a in "abc": #intially take the count of a b c as 0 0 0
+            count[a]=0
+        i=0  #i is left pointer and j is right pointer
+        for j in range(0,n):
+            count[s[j]]+=1 #it will increase the count of each word in dictionary
+            
+            """moving left index to find another set of substrings, we have to move left
+            upto removing atleast one abc completely means count of any abc to 0"""
+            
+            while count["a"]>0 and count["b"]>0 and count["c"]>0:
+                count[s[i]]-=1
+                i=i+1
+                res+=(len(s)-j)
+                
+                """string length-j will give the no of substrings(j to last element of str),
+                for ex: "abcabc" here j will incriment to 2(at index 2 a b c is included
+                so count of abc become >0 then while will execute) after that while will 
+                execute here len of string is 6, 6-2=4 after that 4 substrings will form
+                those are (abc abca abcab abcabc) agian j will incriment to 3, 6-3= 3
+                substrings(bca,bcab,bcabc). agian j inc to 4,6-4= 2(cab, abc) 
+                again j inc to 5 6-5=1(abc).so total 10"""
+                
+        return res
+    
+
+    
+            
+            
+        
