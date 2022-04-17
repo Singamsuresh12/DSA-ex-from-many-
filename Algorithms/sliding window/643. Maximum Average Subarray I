@@ -1,0 +1,14 @@
+reference: https://leetcode.com/problems/maximum-average-subarray-i/solution/  (second approach in this link)
+
+
+class Solution:
+    def findMaxAverage(self, nums: List[int], k: int) -> float:
+        summ=sum(nums[0:k])#adding elements upto kth element and start sliding window fro the k
+        maxsumm=summ
+        print(summ)      
+        n=len(nums)
+        for i in range(k,n):#srating sliding window from k becoz we calculated upto k previously
+            summ=summ+nums[i]-nums[i-k]#nums[i] add rigth element and nums[i-k] removes left element from the sum in each step
+            maxsumm=max(maxsumm,summ)
+        res=maxsumm/k
+        return res
