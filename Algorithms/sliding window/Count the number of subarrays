@@ -1,0 +1,28 @@
+platform:gfg
+
+referred in gfg and youtube(leetcode 713 logic there in this function)
+
+
+"""function for calculating no of subarrays who sum is below given number"""
+def subArraySum(arr, n, s): 
+    summ=0
+    i=0
+    j=0
+    count=0
+    while j<n:
+        summ=summ+arr[j]
+        while summ>s:
+            summ=summ-arr[i]
+            i=i+1
+        count=count+(j-i)+1""" this calculates the no of subarrays produced by adding one element
+        like in (product less than k) leetcode 713 problem"""
+        j=j+1
+    return count
+class Solution:
+    """to get the all subarrays whose sum is in range(in between left and rigth) first calculate
+    count of subarrays whose sum below right and calculate upto left-1 and subtract left-1 count
+    from right count"""
+    def countSubarray(self, N, A, L, R):
+        rsubarray=subArraySum(A, N, R)
+        lsubarray=subArraySum(A, N, L-1)
+        return rsubarray-lsubarray
