@@ -1,0 +1,19 @@
+refere youtube with question name
+
+class Solution:
+    def numSubarrayProductLessThanK(self, nums: List[int], k: int) -> int:
+        i=0#left pointer
+        j=0#right pointer
+        product=1
+        c=0#counter varible
+        if k<=1:
+            return 0
+        while(j<len(nums)):
+            product=product*nums[j]
+            while(product>=k):
+                product=product // nums[i]
+                i=i+1
+            c=c+(j-i)+1# "NOTE POINT":it returns the no of substrings added by adding a new element for example take [2,3,4] if 5 is added to list then the possible substrings are [5 with 2] [5,3][5,4] and [5]itself so after adding j is 3 and i=0 j-j+1 = 4(substring count) added to current count
+            j=j+1
+        return c
+        
